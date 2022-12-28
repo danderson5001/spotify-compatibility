@@ -1,0 +1,124 @@
+
+# dict = {'name': track_name_list, 'genre': genre_list, 'danceability': dancebility_list, 'energy': energy_list, 'key': key_list, 'loudness': loudness_list, 'mode': mode_list, 'speechiness': speechiness_list, 'acousticness': acousticness_list, 'instrumentalness': instrumentalness_list, 'liveness': liveness_list, 'valence': valence_list, 'tempo': tempo_list, 'duration_ms': duration_ms_list, 'time_signature': time_signature_list}
+
+  scope = 'user-library-read'
+    token = util.prompt_for_user_token(username, scope)
+    if token:
+        sp = spotipy.Spotify(auth=token)
+        playlists = sp.user_playlists(username)
+        for playlist in playlists['items']:
+            if playlist['owner']['id'] == username:
+                print()
+                print(playlist['name'])
+                print('  total tracks', playlist['tracks']['total'])
+                results = sp.user_playlist(username, playlist['id'],
+                                           fields="tracks,next")
+                tracks = results['tracks']
+                show_tracks(tracks)
+                while tracks['next']:
+                    tracks = sp.next(tracks)
+                    show_tracks(tracks)
+    else:
+        print("Can't get token for", username)
+
+
+# playlist_links = [
+#     "https://open.spotify.com/playlist/1EMX5zNsrm1SMtK36abja4?si=63160149c186474e",
+#     "https://open.spotify.com/playlist/7g2LnXkIJfmiYPlPOL65Xt?si=90d84717f06b4aa1",
+#     "https://open.spotify.com/playlist/2dAvvZ7FUYsOixkTQmGXEx?si=e61fccf0ce034864"
+# ]
+
+
+    "https://open.spotify.com/playlist/1EMX5zNsrm1SMtK36abja4?si=63160149c186474e",
+    "https://open.spotify.com/playlist/7g2LnXkIJfmiYPlPOL65Xt?si=90d84717f06b4aa1",
+    "https://open.spotify.com/playlist/2dAvvZ7FUYsOixkTQmGXEx?si=e61fccf0ce034864",
+    "https://open.spotify.com/playlist/1NeECf8tx0aFrpEjS7FMcP?si=0585b5f6604e4c4f",
+    "https://open.spotify.com/playlist/3StcVrv3h98m2VtPSvTKpT?si=b2e581886cfc4f3c",
+    "https://open.spotify.com/playlist/6Vf5YtNax8N1N9JKey1GNe?si=89fbf81de5244be0",
+    "https://open.spotify.com/playlist/17f0Wy33cxTD1e3if8zl7c?si=7819d854ac504080",
+    "https://open.spotify.com/playlist/19EOd0ttBZBR9QyfeO8Vw2?si=9a60dbaa3e944da3",
+    "https://open.spotify.com/playlist/1OGfNyVzeTBneEmRsdt1nk?si=38fb889b34604c66",
+    "https://open.spotify.com/playlist/5CJXKwO1eC9n7bEwSBwdQo?si=de7d4ae39bd747ea",
+    "https://open.spotify.com/playlist/5e6NppMflPTssTWInumBoV?si=bc6a8c50092b406e",
+    "https://open.spotify.com/playlist/6bEX8PkM5IevCKwMZ3qeeH?si=9fd04c174b0f4df4",
+    "https://open.spotify.com/playlist/5HlhaVvVD9J6jqDtBaYfof?si=03c66d7442e34b40",
+    "https://open.spotify.com/playlist/0WkBzC86AP1krD7Ffn7R9E?si=4083a347c4274e07",
+    "https://open.spotify.com/playlist/7nEKdRHL3l3XAtSf1cwEAm?si=3c3edf75aa2e4d63",
+    "https://open.spotify.com/playlist/1LUK2sTDbcLefyUFDmsDCU?si=fe34dc9552e44200",
+    "https://open.spotify.com/playlist/1V1nlpoa7vQB3vQJ5ahZ9J?si=3f38e0e24c2347a0",
+    "https://open.spotify.com/playlist/75gvxYvcYGtzff8LJHRHeu?si=e31081fa056b47b3",
+    "https://open.spotify.com/playlist/19xRV4H1rXMEexWZ2HJrcR?si=33c43ebb25f143e1",
+    "https://open.spotify.com/playlist/6zDvknHxJ23AhDI2S8BV35?si=e53c440df55d4cd1",
+    "https://open.spotify.com/playlist/0120Mp8eL8ROJ5Yp6UmJOt?si=1e718176654e44bf"
+
+# dancebility_list = []
+# energy_list = []
+# key_list = []
+# loudness_list = []
+# mode_list = []
+# speechiness_list = []
+# acousticness_list = []
+# instrumentalness_list = []
+# liveness_list = []
+# valence_list = []
+# tempo_list = []
+# duration_ms_list = []
+# time_signature_list = []
+
+   # track_uris = [x["track"]["uri"] for x in sp.playlist_tracks(cur_playlist_URI)["items"]]
+
+    # path = "playlist_1.json"
+
+    # if len(artist_genres) != 0:
+            #     genre_list.append(artist_genres[0])
+            # else:
+            #     genre_list.append('N/A')
+
+            # acoustic_list.append(sp.audio_features(track_uri)[0])
+            # cur_acoustics = sp.audio_features(track_uri)[0]
+            #
+            # dancebility_list.append(list(cur_acoustics.values())[0])
+            # energy_list.append(list(cur_acoustics.values())[1])
+            # key_list.append(list(cur_acoustics.values())[2])
+            # loudness_list.append(list(cur_acoustics.values())[3])
+            # mode_list.append(list(cur_acoustics.values())[4])
+            # speechiness_list.append(list(cur_acoustics.values())[5])
+            # acousticness_list.append(list(cur_acoustics.values())[6])
+            # instrumentalness_list.append(list(cur_acoustics.values())[7])
+            # liveness_list.append(list(cur_acoustics.values())[8])
+            # valence_list.append(list(cur_acoustics.values())[9])
+            # tempo_list.append(list(cur_acoustics.values())[10])
+            # duration_ms_list.append(list(cur_acoustics.values())[16])
+            # time_signature_list.append(list(cur_acoustics.values())[17])
+
+
+
+               results = sp.user(username)
+    users = results['items']
+    for user in users:
+        if user['email'] == EMAIL_ADDRESS:
+            username = user['id']
+            break
+
+    results = sp.user_playlists(user=username, offset=0)
+    playlists = results['items']
+
+    # Replace these values with your own
+    CLIENT_ID = '49a51b43b0af4346ac2897c21627aa87'
+    CLIENT_SECRET = '15d733ef49b847d589063ab65a2ec202'
+    USERNAME = username
+
+    # Set the display name of the playlist you want to get the URI for
+    playlist_name = 'My Playlist'
+
+    # Get the access token
+    scope = 'user-library-read'
+    redirect_uri = 'http://localhost/'
+    token = util.prompt_for_user_token(USERNAME, scope, client_id=CLIENT_ID, client_secret=CLIENT_SECRET,
+                                       redirect_uri=redirect_uri)
+
+    # Create a Spotify client using the access token
+    sp = spotipy.Spotify(auth=token)
+
+    # Get the user's playlists
+    playlists = sp.current_user_playlists()['items']
